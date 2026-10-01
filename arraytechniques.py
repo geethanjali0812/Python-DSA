@@ -38,3 +38,35 @@ def average(arr):
   print(avg)
 a=[1,2,3]
 average(a)
+
+# Problem Summary:
+#Given a sorted array, remove duplicate elements in-place so that each unique element appears only once.
+# input
+class Solution:
+    def removeDuplicates(self, n) -> int:
+        if not n:
+            return 0
+
+        unique_ind = 0
+
+        for i in range(1, len(n)):
+            if n[i] != n[unique_ind]:
+                unique_ind += 1
+                n[unique_ind] = n[i]
+
+        return unique_ind + 1
+
+
+def main():
+    a = int(input())
+    n = list(map(int, input().split()))
+
+    sol = Solution()
+    k = sol.removeDuplicates(n)
+
+    print(k)
+    print(' '.join(map(str, n[:k])))
+
+
+if __name__ == "__main__":
+  main()
